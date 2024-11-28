@@ -2,8 +2,15 @@ import java.util.Objects;
 
     public class Subtask extends Task {
 
-        Integer epicId; // присваиваем подзадаче номер id эпика, которой она принадлежит
+        private Integer epicId; // присваиваем подзадаче номер id эпика, которой она принадлежит
 
+        public Integer getEpicId() {
+            return epicId;
+        }
+
+        public void setEpicId(Integer epicId) {
+            this.epicId = epicId;
+        }
 
         public Subtask(String nameTask, String descriptionTask) {
             super(nameTask, descriptionTask);
@@ -29,7 +36,7 @@ import java.util.Objects;
             return "Subtask{" +
                     "nameSubtask=" + getNameTask() +
                     ", descriptionSubtask=" + getDescriptionTask() +
-                    ", idTask=" + getId() +
+                    ", id=" + getId() +
                     ", status=" + getStatus() +
                     ", epicId=" + epicId +
                     '}';
