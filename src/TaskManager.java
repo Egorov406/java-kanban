@@ -88,7 +88,7 @@ public class TaskManager {
 
     public void updateSubtask(Subtask subtask) { // обновляем подзадачу
         subTasks.put(subtask.getId(), subtask);
-        Epic epic = epics.get(subtask.epicId);
+        Epic epic = epics.get(subtask.getEpicId());
         updateStatusEpic(epic);
     }
 
@@ -143,11 +143,11 @@ public class TaskManager {
 
     public void addSubtask(Subtask subtask) { // добавляем подзадачу
 
-        Epic epic = epics.get(subtask.epicId); // получили эпик по ID
+        Epic epic = epics.get(subtask.getEpicId()); // получили эпик по ID
 
         if (epic != null) {
             subtask.setId(nextId++); // присваиваем номер ID подзадаче
-            subTasks.put(subtask.getId(), subtask); // добавляем подзадачу в мапу
+            subTasks.put(subtask.getId(), subtask);// добавляем подзадачу в мапу
             epic.subTaskId.add(subtask.getId()); // добавляем подзадачу в эпик
         } else {
             System.out.println("Такого эпика нет!");
@@ -176,7 +176,7 @@ public class TaskManager {
         Subtask subtask = subTasks.get(idTask);
 
         if (subtask != null) {
-            Epic epic = epics.get(subtask.epicId);
+            Epic epic = epics.get(subtask.getEpicId());
             epic.subTaskId.remove(subtask.getId());
             updateStatusEpic(epic);
             subTasks.remove(idTask);

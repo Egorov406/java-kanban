@@ -14,18 +14,18 @@ public class Main {
         taskManager.addEpic(epic1);
 
         Subtask subtask1 = new Subtask("Подзадача № 1", "Напомнил");
-        subtask1.epicId = epic1.getId();
+        subtask1.setEpicId(epic1.getId());
         taskManager.addSubtask(subtask1);
 
         Subtask subtask2 = new Subtask("Подзадача № 2", "Запомнил");
-        subtask2.epicId = epic1.getId();
+        subtask2.setEpicId(epic1.getId());
         taskManager.addSubtask(subtask2);
 
         Epic epic2 = new Epic("Эпик № 2", "Забыл");
         taskManager.addEpic(epic2);
 
         Subtask subtask3 = new Subtask("Подзадача № 3", "Уплыл");
-        subtask3.epicId = epic2.getId();
+        subtask3.setEpicId(epic2.getId());
         taskManager.addSubtask(subtask3);
 
 

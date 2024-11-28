@@ -30,7 +30,7 @@ import java.util.Objects;
             return "Epic{" +
                     "nameEpic=" + getNameTask() +
                     ", descriptionEpic=" + getDescriptionTask() +
-                    ", idTask=" + getId() +
+                    ", id=" + getId() +
                     ", status=" + getStatus() +
                     ", subTaskId=" + subTaskId +
                     '}';

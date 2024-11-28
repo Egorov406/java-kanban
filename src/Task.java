@@ -2,9 +2,9 @@ import java.util.Objects;
 
 public class Task {
 
+    private Integer id;
     private String nameTask;  // наименование задачи
-    private String descriptionTask; // описание задачи
-    private Integer idTask;
+    private String descriptionTask; // описание задачи;
     private Status status; // идентификатор задачи
 
     public Task(String nameTask, String descriptionTask) {
@@ -14,11 +14,11 @@ public class Task {
     }
 
     public Integer getId() {
-        return idTask;
+        return id;
     }
 
     public int setId(Integer idTask) {
-        this.idTask = idTask;
+        this.id = idTask;
         return 0;
     }
 
@@ -45,12 +45,12 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(nameTask, task.nameTask) && Objects.equals(descriptionTask, task.descriptionTask) && Objects.equals(idTask, task.idTask) && status == task.status;
+        return Objects.equals(nameTask, task.nameTask) && Objects.equals(descriptionTask, task.descriptionTask) && Objects.equals(id, task.id) && status == task.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nameTask, descriptionTask, idTask, status);
+        return Objects.hash(nameTask, descriptionTask, id, status);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Task {
         return "Task{" +
                 "nameTask='" + nameTask + '\'' +
                 ", descriptionTask='" + descriptionTask + '\'' +
-                ", idTask=" + idTask +
+                ", id=" + id +
                 ", status=" + status +
                 '}';
     }
