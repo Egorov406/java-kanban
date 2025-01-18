@@ -1,9 +1,11 @@
+package task;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
     public class Epic extends Task {
 
-        ArrayList<Integer> subTaskId = new ArrayList<>(); // создаем список id подзадач
+        public ArrayList<Integer> subTaskId = new ArrayList<>(); // создаем список id подзадач
 
         public Epic(String nameTask, String descriptionTask) {
             super(nameTask, descriptionTask);
@@ -27,7 +29,7 @@ import java.util.Objects;
 
         @Override
         public String toString() {
-            return "Epic{" +
+            return "task.Epic{" +
                     "nameEpic=" + getNameTask() +
                     ", descriptionEpic=" + getDescriptionTask() +
                     ", id=" + getId() +

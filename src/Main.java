@@ -1,8 +1,20 @@
+import manager.HistoryManager;
+import manager.Managers;
+import manager.TaskManager;
+import status.Status;
+import task.Epic;
+import task.Subtask;
+import task.Task;
+
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        TaskManager taskManager = new TaskManager();
+
+        TaskManager taskManager = Managers.getDefault(Managers.getDefaultHistory());
+
 
         Task task1 = new Task("Задач № 1", "Сел");
         taskManager.addTask(task1);
@@ -29,7 +41,7 @@ public class Main {
         taskManager.addSubtask(subtask3);
 
 
-        System.out.println("Список задач: " + taskManager.printAllTask());
+        /* System.out.println("Список задач: " + taskManager.printAllTask());
         System.out.println("Список эпиков" + taskManager.printAllEpic());
         System.out.println("Список подзадач: " + taskManager.printAllSubtask());
         System.out.println(" ");
@@ -48,6 +60,13 @@ public class Main {
         taskManager.deleteSubtaskById(5);
         taskManager.deleteEpicById(6);
         System.out.println("Обновленный список подзадач: " + taskManager.printAllSubtask());
-        System.out.println("Обновленный список эпиков: " + taskManager.printAllEpic());
+        System.out.println("Обновленный список эпиков: " + taskManager.printAllEpic());  */
+
+        taskManager.printTaskById(1);
+        taskManager.printTaskById(1);
+
+        System.out.println(taskManager.getHistory());
+
+
     }
 }

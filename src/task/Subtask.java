@@ -1,3 +1,5 @@
+package task;
+
 import java.util.Objects;
 
     public class Subtask extends Task {
@@ -33,7 +35,7 @@ import java.util.Objects;
 
         @Override
         public String toString() {
-            return "Subtask{" +
+            return "task.Subtask{" +
                     "nameSubtask=" + getNameTask() +
                     ", descriptionSubtask=" + getDescriptionTask() +
                     ", id=" + getId() +
