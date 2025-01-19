@@ -8,12 +8,13 @@ import task.Task;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
 
-    private final HashMap<Integer, Task> tasks = new HashMap<>();
-    private final HashMap<Integer, Epic> epics = new HashMap<>();
-    private final HashMap<Integer, Subtask> subTasks = new HashMap<>();
+    private final Map<Integer, Task> tasks = new HashMap<>();
+    private final Map<Integer, Epic> epics = new HashMap<>();
+    private final Map<Integer, Subtask> subTasks = new HashMap<>();
 
     HistoryManager historyManager = Managers.getDefaultHistory();
 
@@ -125,8 +126,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
 
-    @Override
-    public void updateStatusEpic(Epic epic) { // обновляем статус эпика
+    private void updateStatusEpic(Epic epic) { // обновляем статус эпика
         if (epics.containsKey(epic.getId())) {
             if (epic.subTaskId.isEmpty()) { // если список подзадач пустой;
                 epic.setStatus(Status.NEW); // статус эпика NEW

@@ -1,7 +1,7 @@
-import manager.HistoryManager;
+
 import manager.InMemoryTaskManager;
-import manager.Managers;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import task.Epic;
 import manager.TaskManager;
@@ -15,8 +15,8 @@ class InMemoryTaskManagerTest {
 
     static TaskManager taskManager;
 
-    @BeforeAll
-    static void beforeEach() {
+    @BeforeEach
+     void beforeEach() {
         taskManager = new InMemoryTaskManager();
     }
 

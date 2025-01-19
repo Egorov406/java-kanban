@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        TaskManager taskManager = Managers.getDefault(Managers.getDefaultHistory());
+        TaskManager taskManager = Managers.getDefault();
 
 
         Task task1 = new Task("Задач № 1", "Сел");
@@ -41,7 +41,7 @@ public class Main {
         taskManager.addSubtask(subtask3);
 
 
-        /* System.out.println("Список задач: " + taskManager.printAllTask());
+        System.out.println("Список задач: " + taskManager.printAllTask());
         System.out.println("Список эпиков" + taskManager.printAllEpic());
         System.out.println("Список подзадач: " + taskManager.printAllSubtask());
         System.out.println(" ");
@@ -60,7 +60,7 @@ public class Main {
         taskManager.deleteSubtaskById(5);
         taskManager.deleteEpicById(6);
         System.out.println("Обновленный список подзадач: " + taskManager.printAllSubtask());
-        System.out.println("Обновленный список эпиков: " + taskManager.printAllEpic());  */
+        System.out.println("Обновленный список эпиков: " + taskManager.printAllEpic());
 
         taskManager.printTaskById(1);
         taskManager.printTaskById(1);
