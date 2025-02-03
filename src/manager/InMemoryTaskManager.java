@@ -63,7 +63,7 @@ public class InMemoryTaskManager implements TaskManager {
     //-----------------------Реализация методов по получению задачи по ID-----------------------
 
     @Override
-    public Task printTaskById(Integer idTask) {// получаем задачи по ID (работает)
+    public Task printTaskById(Integer idTask) { // получаем задачи по ID (работает)
         historyManager.addHistory(tasks.get(idTask));
         if (tasks.containsKey(idTask)) {
             return tasks.get(idTask);
@@ -81,7 +81,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public Epic printEpicById(Integer idTask) {// получаем эпик по ID (работает)
+    public Epic printEpicById(Integer idTask) { // получаем эпик по ID (работает)
         historyManager.addHistory(epics.get(idTask));
         if (epics.containsKey(idTask)) {
             return epics.get(idTask);
@@ -214,7 +214,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public void deleteSubtaskById(Integer idTask) {// удаляем подзадачу (работает)
+    public void deleteSubtaskById(Integer idTask) { // удаляем подзадачу (работает)
         Subtask subtask = subTasks.get(idTask);
 
         if (subtask != null) {
