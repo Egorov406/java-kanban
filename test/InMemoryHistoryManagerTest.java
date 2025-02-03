@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import task.Epic;
 import task.Subtask;
 import task.Task;
-import status.Status;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
