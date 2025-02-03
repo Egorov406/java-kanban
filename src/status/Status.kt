@@ -1,6 +1,6 @@
 package status
 
-enum class Status {
+public enum class Status {
     NEW,
     IN_PROGRESS,
     DONE
