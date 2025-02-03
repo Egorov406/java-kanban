@@ -30,10 +30,10 @@ public class InMemoryHistoryManager implements HistoryManager {
         Node node = first;
         ArrayList<Task> tasks = new ArrayList<>();
         while (node != null) {
-        tasks.add(node.task);
-        node = node.next;
-
-        } return tasks;
+            tasks.add(node.task);
+            node = node.next;
+        }
+        return tasks;
     }
 
 
@@ -68,7 +68,7 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
     private void linkLast(Task task) {
-        Node node = new Node (task, last, null);
+        Node node = new Node(task, last,null);
         if (first == null) {
             first = node;
         } else {
