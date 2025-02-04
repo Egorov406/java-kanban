@@ -68,7 +68,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         return getTask();
     }
 
-    private void linkLast(Task task) {
+    private final void linkLast(Task task) {
         Node node = new Node(task, last,null);
         if (first == null) {
             first = node;

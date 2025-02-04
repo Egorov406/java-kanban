@@ -38,6 +38,7 @@ public class Main {
         subtask3.setEpicId(epic2.getId());
         taskManager.addSubtask(subtask3);
 
+        taskManager.deleteAllEpic();
 
         System.out.println("Список задач: " + taskManager.printAllTask());
         System.out.println("Список эпиков" + taskManager.printAllEpic());
