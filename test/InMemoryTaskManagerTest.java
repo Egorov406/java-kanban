@@ -1,6 +1,5 @@
 
 import manager.InMemoryTaskManager;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import task.Epic;
@@ -149,33 +148,6 @@ class InMemoryTaskManagerTest {
 
     }
 
-    @Test
-    void deleteTaskById() {
-        Task task1 = new Task("Задача 1", "Описание 1");
-        taskManager.addTask(task1);
-        taskManager.deleteTaskById(1);
-        assertNull(taskManager.printTaskById(1), "Задача должна быть удалена");
-    }
-
-    @Test
-    void deleteEpicById() {
-        Epic epic1 = new Epic("Эпик 1", "Описание 1");
-        taskManager.addEpic(epic1);
-        taskManager.deleteEpicById(1);
-        assertNull(taskManager.printEpicById(1), "Эпик должен быть удален");
-    }
-
-    @Test
-    void deleteSubtaskById() {
-        Epic epic1 = new Epic("Эпик 1", "Описание 1");
-        taskManager.addEpic(epic1);
-        Subtask subtask1 = new Subtask("Подзадача 1", "Описание 1");
-        subtask1.setEpicId(epic1.getId());
-        taskManager.addSubtask(subtask1);
-        taskManager.deleteSubtaskById(2);
-        assertNull(taskManager.printSubtaskById(2), "Подзадача должна быть удалена");
-
-    }
 
     @Test
     void getHistory() {

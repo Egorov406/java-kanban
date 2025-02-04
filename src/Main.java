@@ -1,4 +1,3 @@
-import manager.HistoryManager;
 import manager.Managers;
 import manager.TaskManager;
 import status.Status;
@@ -6,7 +5,6 @@ import task.Epic;
 import task.Subtask;
 import task.Task;
 
-import java.util.ArrayList;
 
 public class Main {
 
@@ -40,6 +38,7 @@ public class Main {
         subtask3.setEpicId(epic2.getId());
         taskManager.addSubtask(subtask3);
 
+        taskManager.deleteAllEpic();
 
         System.out.println("Список задач: " + taskManager.printAllTask());
         System.out.println("Список эпиков" + taskManager.printAllEpic());
