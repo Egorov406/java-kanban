@@ -65,5 +65,9 @@ public class Task {
                 '}';
     }
 
+    public String toStringCsv() {
+        return String.join(",", String.valueOf(id), "TASK", nameTask, status.toString(), descriptionTask);
+    }
+
 }
 

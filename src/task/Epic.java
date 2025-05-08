@@ -36,5 +36,10 @@ import java.util.Objects;
                     ", subTaskId=" + subTaskId +
                     '}';
         }
+
+        public String toStringCsv() {
+            return String.join(",", String.valueOf(getId()), "EPIC", getNameTask(), getStatus().toString(), getDescriptionTask());
+        }
+
     }
 
