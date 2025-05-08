@@ -21,13 +21,13 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     }
 
     @Override
-    public void addEpic (Epic epic) {
+    public void addEpic(Epic epic) {
         super.addEpic(epic);
         save();
     }
 
     @Override
-    public void addSubtask (Subtask subtask) {
+    public void addSubtask(Subtask subtask) {
         super.addSubtask(subtask);
         save();
     }
@@ -88,7 +88,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
         }
 
-        public Task fromString (String value){
+        public Task fromString(String value) {
             String[] str = value.split(",");
             if (str.length < 5) {
                 throw new IllegalArgumentException("Недостаточно данных для создания задачи: " + value);
