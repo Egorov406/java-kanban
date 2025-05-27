@@ -42,4 +42,9 @@ import java.util.Objects;
                     ", epicId=" + epicId +
                     '}';
         }
+
+        public String toStringCsv() {
+            return String.join(",", String.valueOf(getId()), "SUBTASK", getNameTask(), getStatus().toString(), getDescriptionTask(), String.valueOf(epicId));
+        }
+
     }
