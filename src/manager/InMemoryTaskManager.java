@@ -204,7 +204,7 @@ public class InMemoryTaskManager implements TaskManager {
     // ----------------------Реализация методов по добавлению задач-------------------
 
     @Override
-    public void addTask(Task task) {// добавляем задачу
+    public void addTask(Task task) {  // добавляем задачу
         if (task.getStartTime() != null && task.getDuration() != null && hasOverlap(task)) {
             throw new IllegalStateException("Задача пересекается с другой задачей по времени");
         }
@@ -222,7 +222,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public void addSubtask(Subtask subtask) {//// добавляем подзадачу
+    public void addSubtask(Subtask subtask) {  // добавляем подзадачу
 
         if (subtask.getStartTime() != null && subtask.getDuration() != null && hasOverlap(subtask)) {
             throw new IllegalStateException("Подзадача пересекается с другой задачей по времени");
