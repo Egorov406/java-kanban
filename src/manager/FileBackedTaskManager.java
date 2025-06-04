@@ -3,6 +3,8 @@ import status.Status;
 import task.*;
 import task.Task;
 import java.io.*;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import static task.TaskType.*;
 
 
@@ -29,6 +31,10 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     @Override
     public void addSubtask(Subtask subtask) {
         super.addSubtask(subtask);
+        Epic epic = printEpicById(subtask.getEpicId());
+        if (epic != null) {
+            epic.updateEpicTimes(printAllSubtaskEpic(subtask.getEpicId()));
+        }
         save();
     }
 
@@ -60,6 +66,10 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         } catch (IOException e) {
             throw new RuntimeException("Ошибка при чтении данных из файла", e);
         }
+
+        for (Epic epic : manager.printAllEpic()) {
+            epic.updateEpicTimes(manager.printAllSubtaskEpic(epic.getId()));
+        }
         return manager;
     }
 
@@ -68,7 +78,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         public void save() {
 
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-                bw.write("id,type,name,status,description,epicId");
+                bw.write("id,type,name,status,description,epicId,duration,startTime");
                 bw.newLine();
                 for (Task task : printAllTask()) {
                     bw.write(task.toStringCsv());
@@ -100,24 +110,31 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             Status status = Status.valueOf(str[3]);
             String description = str[4];
 
+
                 switch (type) {
                     case TASK -> {
-                        Task task = new Task(name, description);
+                        Duration duration = str.length > 6 && !str[6].isEmpty() ? Duration.ofMinutes(Long.parseLong(str[6])) : null;
+                        LocalDateTime startTime = str.length > 7 && !str[7].isEmpty() ? LocalDateTime.parse(str[7]) : null;
+                        Task task = new Task(name, description, duration, startTime);
                         task.setId(id);
                         task.setStatus(status);
                         return task;
                     }
                     case EPIC -> {
-                        Epic epic = new Epic(name, description);
+                        Duration duration = str.length > 6 && !str[6].isEmpty() ? Duration.ofMinutes(Long.parseLong(str[6])) : null;
+                        LocalDateTime startTime = str.length > 7 && !str[7].isEmpty() ? LocalDateTime.parse(str[7]) : null;
+                        Epic epic = new Epic(name, description, duration, startTime);
                         epic.setId(id);
                         epic.setStatus(status);
                         return epic;
                     }
                     case SUBTASK -> {
-                        Subtask subtask = new Subtask(name, description);
+                        int epicId = (str.length > 5 && !str[5].isEmpty()) ? Integer.parseInt(str[5]) : 0;
+                        Duration duration = str.length > 6 && !str[6].isEmpty() ? Duration.ofMinutes(Long.parseLong(str[6])) : null;
+                        LocalDateTime startTime = str.length > 7 && !str[7].isEmpty() ? LocalDateTime.parse(str[7]) : null;
+                        Subtask subtask = new Subtask(name, description, duration, startTime);
                         subtask.setId(id);
                         subtask.setStatus(status);
-                        int epicId = (str.length > 5 && !str[5].isEmpty()) ? Integer.parseInt(str[5]) : 0;
                         subtask.setEpicId(epicId);
                         return subtask;
                     }

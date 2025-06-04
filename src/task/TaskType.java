@@ -4,7 +4,7 @@ public enum TaskType {
 
     TASK,
     EPIC,
-    TaskType, SUBTASK
+    SUBTASK
 
 }
 

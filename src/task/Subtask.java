@@ -1,9 +1,20 @@
 package task;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
     public class Subtask extends Task {
 
         private Integer epicId; // присваиваем подзадаче номер id эпика, которой она принадлежит
+
+
+        public Subtask(String nameTask, String descriptionTask, Duration duration, LocalDateTime startTime) {
+            super(nameTask, descriptionTask, duration, startTime);
+        }
+
+        public Subtask(String nameTask, String descriptionTask) {
+            super(nameTask, descriptionTask);
+        }
 
         public Integer getEpicId() {
             return epicId;
@@ -11,11 +22,6 @@ import java.util.Objects;
 
         public void setEpicId(Integer epicId) {
             this.epicId = epicId;
-        }
-
-        public Subtask(String nameTask, String descriptionTask) {
-            super(nameTask, descriptionTask);
-
         }
 
         @Override
@@ -44,7 +50,9 @@ import java.util.Objects;
         }
 
         public String toStringCsv() {
-            return String.join(",", String.valueOf(getId()), "SUBTASK", getNameTask(), getStatus().toString(), getDescriptionTask(), String.valueOf(epicId));
+            String durationStr = getDuration() != null ? String.valueOf(getDuration().toMinutes()) : "";
+            String startTimeStr = getStartTime() != null ? getStartTime().toString() : "";
+            return String.join(",", String.valueOf(getId()), "SUBTASK", getNameTask(), getStatus().toString(), getDescriptionTask(), String.valueOf(epicId), durationStr, startTimeStr);
         }
 
     }

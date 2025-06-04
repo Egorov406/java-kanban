@@ -40,6 +40,9 @@ public class InMemoryHistoryManager implements HistoryManager {
 
     @Override
     public void addHistory(Task task) {
+        if (task == null) {
+            return;
+        }
         remove(task.getId());
         linkLast(task);
         nodeMap.put(task.getId(), last);
