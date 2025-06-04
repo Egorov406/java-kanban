@@ -132,7 +132,7 @@ public class InMemoryTaskManager implements TaskManager {
     //----------------------Реализация методов по обновлению задач---------------------------
 
     @Override
-    public void updateTask(Task task) {// обновляем задачу
+    public void updateTask(Task task) { // обновляем задачу
         if (task.getStartTime() != null && task.getDuration() != null && hasOverlap(task)) {
             throw new IllegalStateException("Задача пересекается с другой задачей по времени");
         }
