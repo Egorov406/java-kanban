@@ -3,20 +3,19 @@ import manager.InMemoryTaskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import task.Epic;
-import manager.TaskManager;
 import task.Subtask;
 import task.Task;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InMemoryTaskManagerTest {
+class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
 
-    static TaskManager taskManager;
 
     @BeforeEach
-     void beforeEach() {
-        taskManager = new InMemoryTaskManager();
+    void setUp() {
+        taskManager = new InMemoryTaskManager();  // инициализация конкретного менеджера
     }
 
 

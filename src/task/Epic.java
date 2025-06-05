@@ -2,7 +2,6 @@ package task;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
     public class Epic extends Task {
@@ -18,38 +17,13 @@ import java.util.Objects;
             super(nameTask, descriptionTask);
         }
 
-        public void updateEpicTimes(List<Subtask> subtasks) {
-            if (subtasks.isEmpty()) {
-                setDuration(null);
-                setStartTime(null);
-                this.endTime = null;
-                return;
-            }
-
-            LocalDateTime earliestStart = null;
-            LocalDateTime latestEnd = null;
-            long totalMinutes = 0;
-
-            for (Subtask subtask : subtasks) {
-                if (subtask.getStartTime() != null && subtask.getDuration() != null) {
-                    totalMinutes += subtask.getDuration().toMinutes();
-                    if (earliestStart == null || subtask.getStartTime().isBefore(earliestStart)) {
-                        earliestStart = subtask.getStartTime();
-                    }
-                    LocalDateTime subtaskEnd = subtask.getEndTime();
-                    if (subtaskEnd != null && (latestEnd == null || subtaskEnd.isAfter(latestEnd))) {
-                        latestEnd = subtaskEnd;
-                    }
-                }
-            }
-
-            setDuration(totalMinutes > 0 ? Duration.ofMinutes(totalMinutes) : null);
-            setStartTime(earliestStart);
-            this.endTime = latestEnd;
-        }
 
         public LocalDateTime getEndTime() {
             return endTime;
+        }
+
+        public void setEndTime(LocalDateTime endTime) {
+            this.endTime = endTime;
         }
 
         @Override
@@ -82,6 +56,5 @@ import java.util.Objects;
             String startTimeStr = getStartTime() != null ? getStartTime().toString() : "";
             return String.join(",", String.valueOf(getId()), "EPIC", getNameTask(), getStatus().toString(), getDescriptionTask(), "", durationStr, startTimeStr);
         }
-
     }
 
