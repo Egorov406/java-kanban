@@ -30,7 +30,7 @@ public interface TaskManager {
 
     void updateSubtask(Subtask subtask);
 
-    //void updateStatusEpic(Epic epic);
+    List<Task> getPrioritizedTasks();
 
     void addTask(Task task);
 

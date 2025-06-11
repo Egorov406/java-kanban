@@ -1,15 +1,29 @@
 package task;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
     public class Epic extends Task {
 
-        public ArrayList<Integer> subTaskId = new ArrayList<>(); // создаем список id подзадач
+        public ArrayList<Integer> subTaskId = new ArrayList<>();// создаем список id подзадач
+        private LocalDateTime endTime;
+
+        public Epic(String nameTask, String descriptionTask, Duration duration, LocalDateTime startTime) {
+            super(nameTask, descriptionTask, duration, startTime);
+        }
 
         public Epic(String nameTask, String descriptionTask) {
             super(nameTask, descriptionTask);
+        }
 
 
+        public LocalDateTime getEndTime() {
+            return endTime;
+        }
+
+        public void setEndTime(LocalDateTime endTime) {
+            this.endTime = endTime;
         }
 
         @Override
@@ -38,8 +52,9 @@ import java.util.Objects;
         }
 
         public String toStringCsv() {
-            return String.join(",", String.valueOf(getId()), "EPIC", getNameTask(), getStatus().toString(), getDescriptionTask());
+            String durationStr = getDuration() != null ? String.valueOf(getDuration().toMinutes()) : "";
+            String startTimeStr = getStartTime() != null ? getStartTime().toString() : "";
+            return String.join(",", String.valueOf(getId()), "EPIC", getNameTask(), getStatus().toString(), getDescriptionTask(), "", durationStr, startTimeStr);
         }
-
     }
 
